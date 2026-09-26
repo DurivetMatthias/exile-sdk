@@ -91,3 +91,14 @@ if GEM_TOGGLES._20 in active_gem_rules:
             ]
         ),
     )
+
+
+rules.append(
+    Show(
+        [
+            InEndgame(),
+            MultiClass(["Uncut Spirit Gems"]),
+            TierStyle(TIER.LEGENDARY),
+        ]
+    ),
+)

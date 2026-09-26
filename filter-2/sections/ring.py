@@ -39,6 +39,7 @@ good_bases = [
     "Topaz Ring",
     "Amethyst Ring",
     "Prismatic Ring",
+    "Breach Ring",
 ]
 
 if RING_TOGGLES.GOOD_BASE in active_ring_rules:
@@ -60,6 +61,17 @@ if RING_TOGGLES.RES in active_ring_rules:
                 Rarity(RARITY.MAGIC, OPERATOR.LTE),
                 MultiBaseType(good_bases),
                 TierStyle(TIER.EPIC),
+            ]
+        )
+    )
+
+if RING_TOGGLES.UNIQUE in active_ring_rules:
+    rules.append(
+        Show(
+            [
+                Rarity(RARITY.UNIQUE),
+                BaseType("Gold Ring"),
+                TierStyle(TIER.LEGENDARY),
             ]
         )
     )

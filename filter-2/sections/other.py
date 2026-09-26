@@ -57,6 +57,7 @@ rules.append(
                     "Saga",
                     "Alloy",
                     "Crest",
+                    "Verisium",
                     "Expedition Tablet",
                     "Expedition Logbook",
                     "Shattered Triskelion",
@@ -93,7 +94,7 @@ rules.append(
         [
             MultiBaseType(
                 [
-                    # "Sacred Bloom",
+                    "Sacred Bloom",
                     "Ritual tablet",
                     "Head of the King",
                     "Call of the Shadows",
@@ -209,17 +210,16 @@ if OTHER_TOGGLES.SEKHEMA in active_other_rules:
 rules.append(
     Show(
         [
-            ItemLevel(75),
-            MultiBaseType(["Djinn Barya", "Inscribed Ultimatum"]),
+            MultiBaseType(["Gold Key", "Silver Key", "Bronze Key"]),
             TierStyle(TIER.COMMON),
         ]
-    )
+    ),
 )
 rules.append(
     Show(
         [
-            MultiBaseType(["Gold Key", "Silver Key", "Bronze Key"]),
-            TierStyle(TIER.COMMON),
+            MultiBaseType(["Victorious Fate", "Cowardly Fate", "Deadly Fate"]),
+            TierStyle(TIER.LEGENDARY),
         ]
     ),
 )
@@ -254,7 +254,8 @@ rules.append(
                     "Desert Rune",
                     "Storm Rune",
                     "Glacial Rune",
-                ]
+                ],
+                OPERATOR.CONTAINS,
             ),
             TierStyle(TIER.RARE),
         ]

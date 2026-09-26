@@ -60,7 +60,7 @@ if BELT_TOGGLES.UNIQUE in active_belt_rules:
             [
                 MultiBaseType(["Heavy Belt", "Utility Belt"]),
                 Rarity(RARITY.UNIQUE),
-                TierStyle(TIER.EPIC),
+                TierStyle(TIER.LEGENDARY),
             ]
         )
     )
@@ -71,7 +71,7 @@ if BELT_TOGGLES.UNIQUE in active_belt_rules:
             [
                 MultiBaseType(["Heavy Belt", "Utility Belt"]),
                 Rarity(RARITY.NORMAL),
-                TierStyle(TIER.EPIC),
+                TierStyle(TIER.LEGENDARY),
             ]
         )
     )

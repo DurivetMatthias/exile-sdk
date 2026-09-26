@@ -51,7 +51,8 @@ if SHIELD_TOGGLES.TAWHOAN_RES in active_shield_rules:
             [
                 ItemLevel(82),
                 BaseType("Tawhoan Tower Shield"),
-                TierStyle(TIER.EPIC),
+                Rarity(RARITY.MAGIC, OPERATOR.LTE),
+                TierStyle(TIER.LEGENDARY),
             ]
         )
     )

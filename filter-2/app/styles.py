@@ -50,8 +50,8 @@ class ExpeditionStyle(Condition):
 
 class RitualStyle(Condition):
     def __str__(self):
-        rgb = RGB.RED
-        color = COLOR.RED
+        rgb = RGB.BLACK
+        color = COLOR.GREY
         return formatting.format_conditions(
             [
                 PlayEffect(color),

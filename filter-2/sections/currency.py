@@ -113,7 +113,7 @@ if CURRENCY_TOGGLES.GLASSBLOWER in active_currency_rules:
     rules.append(Show([BaseType("Glassblower's Bauble"), TierStyle(TIER.EPIC)]))
 if CURRENCY_TOGGLES.LESSER_JEWELLER in active_currency_rules:
     rules.append(Show([BaseType("Lesser Jeweller's Orb"), TierStyle(TIER.EPIC)]))
-if CURRENCY_TOGGLES.LESSER_JEWELLER in active_currency_rules:
+if CURRENCY_TOGGLES.GREATER_JEWELLER in active_currency_rules:
     rules.append(Show([BaseType("Greater Jeweller's Orb"), TierStyle(TIER.EPIC)]))
 
 # Fallback Hide rule

@@ -29,12 +29,7 @@ if FLASK_TOGGLES.GOOD_BASE in active_flask_rules:
             [
                 InEndgame(),
                 Rarity(RARITY.MAGIC, OPERATOR.LTE),
-                MultiBaseType(
-                    [
-                        "Ultimate Life Flask",
-                        "Ultimate Mana Flask",
-                    ]
-                ),
+                MultiBaseType(["Ultimate Life Flask", "Ultimate Mana Flask"]),
                 TierStyle(TIER.COMMON),
             ]
         )
@@ -46,7 +41,7 @@ if FLASK_TOGGLES.GOOD_ILVL in active_flask_rules:
             [
                 ItemLevel(83),
                 Rarity(RARITY.MAGIC, OPERATOR.LTE),
-                MultiBaseType(["Ultimate Life Flask"]),
+                MultiBaseType(["Ultimate Life Flask", "Ultimate Mana Flask"]),
                 TierStyle(TIER.LEGENDARY),
             ]
         )
