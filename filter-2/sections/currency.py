@@ -57,15 +57,6 @@ rules.append(
 rules.append(
     Show(
         [
-            AreaLevel(15, OPERATOR.LTE),
-            BaseType("Gold"),
-            TierStyle(TIER.COMMON),
-        ]
-    )
-)
-rules.append(
-    Show(
-        [
             AreaLevel(65, OPERATOR.LT),
             BaseType("Gold"),
             StackSize(100),

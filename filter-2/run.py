@@ -7,6 +7,7 @@ from app.styles import *
 
 # Sections
 from sections import (
+    alt,
     amulet,
     belt,
     boots,
@@ -40,6 +41,7 @@ rules = [
     *shield.rules,
     *body.rules,
     *mace.rules,
+    *alt.rules,
 ]
 
 filter.generate(rules, "shield-wall")
