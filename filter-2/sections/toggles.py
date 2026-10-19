@@ -1,166 +1,209 @@
 from enum import StrEnum
 
 
-class AMULET_TOGGLES(StrEnum):
+class GEM_TOGGLES(StrEnum):
     ANY = "Any"
-    MELEE_LEVEL = "Melee Level"
-    MELEE_LEVEL_AND_RES = "Melee level and resistances"
-
-
-class BELT_TOGGLES(StrEnum):
-    ANY = "Any"
-    FINE = "Fine"
-    FINE_RES = "Fine Resistance"
-    UNIQUE = "Unique"
-
-
-class BODY_TOGGLES(StrEnum):
-    ANY = "Any"
-    SOLDIER = "Soldier Cuirass"
-    SOLDIER_RES = "Soldier with Resistance"
-    BRASS_DOME = "Brass Dome"
-
-
-class BOOTS_TOGGLES(StrEnum):
-    ANY = "Any"
-    TASALIAN = "Tasalian"
-    FRACTURE = "Tasalian for fracturing"
+    SUPPORT_5 = "lvl 5 support gem"
+    SKILL_16 = "lvl 16 skill gem"
+    SKILL_17 = "lvl 17 skill gem"
+    SKILL_18 = "lvl 18 skill gem"
+    SKILL_19 = "lvl 19 skill gem"
+    SKILL_20 = "lvl 20 skill gem"
+    SPIRIT_16 = "lvl 16 spirit gem"
+    SPIRIT_17 = "lvl 17 spirit gem"
+    SPIRIT_18 = "lvl 18 spirit gem"
+    SPIRIT_19 = "lvl 19 spirit gem"
+    SPIRIT_20 = "lvl 20 spirit gem"
 
 
 class CURRENCY_TOGGLES(StrEnum):
+    SCROLL_OF_WISDOM = "Scroll of Wisdom"
     ARTIFICER = "Artificer's Orb"
+    ARCANIST = "Arcanist's Etcher"
     ARMOURER = "Armourer's Scrap"
-    GEMCUTTER = "Gemcutter's Prism"
-    GLASSBLOWER = "Glassblower's Bauble"
+    BLACKSMITH = "Blacksmith's Whetstone"
     LESSER_JEWELLER = "Lesser Jeweller's Orb"
     GREATER_JEWELLER = "Greater Jeweller's Orb"
 
 
-class SHIELD_TOGGLES(StrEnum):
+class JEWEL_TOGGLES(StrEnum):
+    RUBY = "Ruby"
+    SAPPHIRE = "Sapphire"
+    EMERALD = "Emerald"
+
+
+class CHARM_TOGGLES(StrEnum):
     ANY = "Any"
-    TAWHOAN = "Tawhoan Tower Shield"
-    TAWHOAN_RES = "Tawhoan with res"
+    ANTIDOTE = "Antidote Charm"
+    T1_ANTIDOTE = "Antidote Charm with maximum Item Level"
+    UNIQUE_ANTIDOTE = "Arakaali's Gift"
+    DOUSING = "Dousing Charm"
+    T1_DOUSING = "Dousing Charm with maximum Item Level"
+    STAUNCHING = "Staunching Charm"
+    T1_STAUNCHING = "Staunching Charm with maximum Item Level"
+    THAWING = "Thawing Charm"
+    T1_THAWING = "Thawing Charm with maximum Item Level"
+    RITE_OF_PASSAGE = "Rite of Passage"
 
 
 class FLASK_TOGGLES(StrEnum):
     ANY = "Any"
-    GOOD_BASE = "Good base"
-    GOOD_ILVL = "Good item level"
-    UNIQUE = "Unique"
+    ULTIMATE_LIFE = "Ultimate Life Flask"
+    T1_ULTIMATE_LIFE = "Ultimate Life Flask with maximum Item Level"
+    ULTIMATE_MANA = "Ultimate Mana Flask"
+    T1_ULTIMATE_MANA = "Ultimate Mana Flask with maximum Item Level"
+    LAVIAGNAS_SPIRITS = "Lavianga's Spirits"
+
+
+class AMULET_TOGGLES(StrEnum):
+    ANY = "Any"
+    GOOD_BASE = "Good base type"
+    T1_GOOD_BASE = "Good base type with maximum Item Level"
+
+
+class BELT_TOGGLES(StrEnum):
+    ANY = "Any"
+    FINE = "Fine Belt"
+    T1_FINE = "Fine Belt with maximum Item Level"
+    MAGEBLOOD = "Mageblood"
+    HEADHUNTER = "Headhunter"
 
 
 class RING_TOGGLES(StrEnum):
     ANY = "Any"
-    GOOD_BASE = "Good bases"
-    RES = "Resistances"
-    UNIQUE = "unique"
-
-
-class OTHER_TOGGLES(StrEnum):
-    SEKHEMA = "trial of sekhema key"
-    CHAOS = "trial of chaos key"
-    BASIC_AUGMENT = "basic augment"
-
-
-class MACE_TOGGLES(StrEnum):
-    ANY = "Any"
-    DAZE = "Fortified or Structured"
-    DAZE_4 = "Fortified or Structured and +4"
+    RESISTANCE_BASE = "Bases with resistances"
+    T1_RESISTANCE_BASE = "Bases with resistances with maximum Item Level"
+    KALANDRAS_TOUCH = "Kalandra's Touch"
 
 
 class HELMET_TOGGLES(StrEnum):
     ANY = "Any"
-    IMPERIAL = "Imperial"
-    IMPERIAL_RES = "Imperial with Resistance"
+    IMPERIAL = "Imperial Helmet"
+    T1_IMPERIAL = "Imperial Helmet with maximum Item Level"
     CONSTRICTING_COMMAND = "Constricting Command"
 
 
 class GLOVES_TOGGLES(StrEnum):
     ANY = "Any"
     MASSIVE = "Massive Mitts"
-    MASSIVE_RES = "Massive Mitts with res"
+    T1_MASSIVE = "Massive Mitts with maximum Item Level"
 
 
-class GEM_TOGGLES(StrEnum):
+class BOOTS_TOGGLES(StrEnum):
     ANY = "Any"
-    SUPPORT = "Uncut support lvl 5"
-    _18 = "18"
-    _19 = "19"
-    _20 = "20"
+    TASALIAN = "Tasalian Boots"
+    T1_TASALIAN = "Tasalian Boots with maximum Item Level"
 
 
-active_gem_rules = [
+class BODY_TOGGLES(StrEnum):
+    ANY = "Any"
+    SOLDIER = "Soldier Cuirass"
+    T1_SOLDIER = "Soldier Cuirass with maximum Item Level"
+    BRASS_DOME = "Brass Dome"
+
+
+class MACE_TOGGLES(StrEnum):
+    ANY = "Any"
+    DAZE = "Fortified or Structured"
+    T1_DAZE = "Fortified or Structured and T1 Melee Levels"
+
+
+class SHIELD_TOGGLES(StrEnum):
+    ANY = "Any"
+    TAWHOAN = "Tawhoan Tower Shield"
+    T1_TAWHOAN = "Tawhoan Tower Shield with maximum Item Level"
+
+
+class OTHER_TOGGLES(StrEnum):
+    SEKHEMA = "trial of sekhema key"
+    CHAOS = "trial of chaos key"
+    GREATER_RUNE = "good greater runes"
+
+
+toggles = [
+    # Gem
     GEM_TOGGLES.ANY,
-    GEM_TOGGLES.SUPPORT,
-    GEM_TOGGLES._18,
-    GEM_TOGGLES._19,
-    GEM_TOGGLES._20,
-]
-active_currency_rules = [
+    GEM_TOGGLES.SUPPORT_5,
+    GEM_TOGGLES.SKILL_16,
+    GEM_TOGGLES.SKILL_17,
+    GEM_TOGGLES.SKILL_18,
+    GEM_TOGGLES.SKILL_19,
+    GEM_TOGGLES.SKILL_20,
+    GEM_TOGGLES.SPIRIT_16,
+    GEM_TOGGLES.SPIRIT_17,
+    GEM_TOGGLES.SPIRIT_18,
+    GEM_TOGGLES.SPIRIT_19,
+    GEM_TOGGLES.SPIRIT_20,
+    # Currency
+    CURRENCY_TOGGLES.SCROLL_OF_WISDOM,
     CURRENCY_TOGGLES.ARTIFICER,
+    # CURRENCY_TOGGLES.ARCANIST,
     CURRENCY_TOGGLES.ARMOURER,
-    CURRENCY_TOGGLES.GEMCUTTER,
-    CURRENCY_TOGGLES.GLASSBLOWER,
+    CURRENCY_TOGGLES.BLACKSMITH,
     CURRENCY_TOGGLES.LESSER_JEWELLER,
     CURRENCY_TOGGLES.GREATER_JEWELLER,
-]
-active_flask_rules = [
+    # Charm
+    CHARM_TOGGLES.ANY,
+    CHARM_TOGGLES.ANTIDOTE,
+    CHARM_TOGGLES.DOUSING,
+    CHARM_TOGGLES.STAUNCHING,
+    CHARM_TOGGLES.THAWING,
+    CHARM_TOGGLES.T1_ANTIDOTE,
+    CHARM_TOGGLES.T1_DOUSING,
+    CHARM_TOGGLES.T1_STAUNCHING,
+    CHARM_TOGGLES.T1_THAWING,
+    CHARM_TOGGLES.UNIQUE_ANTIDOTE,
+    CHARM_TOGGLES.RITE_OF_PASSAGE,
+    # Flask
     FLASK_TOGGLES.ANY,
-    FLASK_TOGGLES.GOOD_BASE,
-    FLASK_TOGGLES.GOOD_ILVL,
-    FLASK_TOGGLES.UNIQUE,
-]
-active_other_rules = [
-    OTHER_TOGGLES.SEKHEMA,
-    OTHER_TOGGLES.CHAOS,
-    OTHER_TOGGLES.BASIC_AUGMENT,
-]
-active_amulet_rules = [
+    FLASK_TOGGLES.ULTIMATE_LIFE,
+    FLASK_TOGGLES.T1_ULTIMATE_LIFE,
+    FLASK_TOGGLES.ULTIMATE_MANA,
+    FLASK_TOGGLES.T1_ULTIMATE_MANA,
+    FLASK_TOGGLES.LAVIAGNAS_SPIRITS,
+    # Amulet
     AMULET_TOGGLES.ANY,
-    AMULET_TOGGLES.MELEE_LEVEL,
-    AMULET_TOGGLES.MELEE_LEVEL_AND_RES,
-]
-active_belt_rules = [
+    AMULET_TOGGLES.GOOD_BASE,
+    AMULET_TOGGLES.T1_GOOD_BASE,
+    # Belt
     BELT_TOGGLES.ANY,
     BELT_TOGGLES.FINE,
-    BELT_TOGGLES.FINE_RES,
-    BELT_TOGGLES.UNIQUE,
-]
-active_ring_rules = [
+    BELT_TOGGLES.T1_FINE,
+    BELT_TOGGLES.MAGEBLOOD,
+    BELT_TOGGLES.HEADHUNTER,
+    # Ring
     RING_TOGGLES.ANY,
-    RING_TOGGLES.GOOD_BASE,
-    RING_TOGGLES.RES,
-    RING_TOGGLES.UNIQUE,
-]
-active_helmet_rules = [
+    RING_TOGGLES.RESISTANCE_BASE,
+    RING_TOGGLES.T1_RESISTANCE_BASE,
+    RING_TOGGLES.KALANDRAS_TOUCH,
+    # Helmet
     HELMET_TOGGLES.ANY,
     HELMET_TOGGLES.IMPERIAL,
-    HELMET_TOGGLES.IMPERIAL_RES,
+    HELMET_TOGGLES.T1_IMPERIAL,
     HELMET_TOGGLES.CONSTRICTING_COMMAND,
-]
-active_gloves_rules = [
+    # Gloves
     GLOVES_TOGGLES.ANY,
     GLOVES_TOGGLES.MASSIVE,
-    GLOVES_TOGGLES.MASSIVE_RES,
-]
-active_body_rules = [
-    BODY_TOGGLES.ANY,
-    BODY_TOGGLES.SOLDIER,
-    BODY_TOGGLES.SOLDIER_RES,
-    BODY_TOGGLES.BRASS_DOME,
-]
-active_boots_rules = [
+    GLOVES_TOGGLES.T1_MASSIVE,
+    # Boots
     BOOTS_TOGGLES.ANY,
     BOOTS_TOGGLES.TASALIAN,
-    BOOTS_TOGGLES.FRACTURE,
-]
-active_mace_rules = [
-    # MACE_TOGGLES.ANY,
-    # MACE_TOGGLES.DAZE,
-    # MACE_TOGGLES.DAZE_4,
-]
-active_shield_rules = [
+    BOOTS_TOGGLES.T1_TASALIAN,
+    # Body Armour
+    BODY_TOGGLES.ANY,
+    BODY_TOGGLES.SOLDIER,
+    BODY_TOGGLES.T1_SOLDIER,
+    BODY_TOGGLES.BRASS_DOME,
+    # Mace
+    MACE_TOGGLES.ANY,
+    MACE_TOGGLES.DAZE,
+    MACE_TOGGLES.T1_DAZE,
+    # Shield
     SHIELD_TOGGLES.ANY,
     SHIELD_TOGGLES.TAWHOAN,
-    SHIELD_TOGGLES.TAWHOAN_RES,
+    SHIELD_TOGGLES.T1_TAWHOAN,
+    # Other
+    OTHER_TOGGLES.SEKHEMA,
+    OTHER_TOGGLES.CHAOS,
+    OTHER_TOGGLES.GREATER_RUNE,
 ]

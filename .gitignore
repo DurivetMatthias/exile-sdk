@@ -2,3 +2,7 @@ __pycache__/
 *.hideout
 *.filter
 *.build
+
+# Hide windows credentials
+./filter-2/update.sh
+

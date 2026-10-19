@@ -1,9 +1,8 @@
 import textwrap
+from collections.abc import Sequence
 
-from typing import Sequence
-
-from app.conditions import *
 from app.blocks import *
+from app.conditions import *
 
 TAB_WITH_SPACES = " " * 4
 
@@ -25,7 +24,7 @@ def format_rule(rule: Block):
     instruction_text = format_condition(rule.instruction)
     conditions_text = format_conditions(rule.conditions)
     conditions_text = textwrap.indent(conditions_text, prefix=TAB_WITH_SPACES)
-    return "\n".join([instruction_text, conditions_text])
+    return f"{instruction_text}\n{conditions_text}"
 
 
 def format_rules(rules: Sequence[Block]):
@@ -36,6 +35,4 @@ def format_rules(rules: Sequence[Block]):
 def format_filter(*, rules: list[Block], header: str):
     rules_text = format_rules(rules)
     header_text = format_header(header)
-
-    filter_text = "\n\n".join([header_text, rules_text])
-    return filter_text
+    return f"{header_text}\n\n{rules_text}"

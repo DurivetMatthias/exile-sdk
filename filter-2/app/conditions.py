@@ -1,9 +1,6 @@
+from app import formatting
+from app.actions import *
 from app.categories import *
-
-
-class Condition:
-    def __str__(self):
-        raise NotImplementedError
 
 
 class AreaLevel(Condition):
@@ -736,3 +733,57 @@ class InHighTierMaps(Condition):
 class InActOne(Condition):
     def __str__(self):
         return str(AreaLevel(15, OPERATOR.LTE))
+
+
+class CraftingBase(Condition):
+    def __init__(
+        self,
+        name,
+        tier=TIER.EPIC,
+        rarity=RARITY.MAGIC,
+        rarity_operator=OPERATOR.LTE,
+        ilvl=1,
+    ):
+        self.name = name
+        self.tier = tier
+        self.ilvl = ilvl
+        self.rarity = rarity
+        self.rarity_operator = rarity_operator
+        print("Made a crafting base")
+        print("name:", name)
+
+    def __str__(self):
+        return formatting.format_conditions(
+            [
+                Rarity(self.rarity, self.rarity_operator),
+                ItemLevel(self.ilvl),
+                BaseType(self.name),
+                TierStyle(self.tier),
+            ]
+        )
+
+
+class PerfectCraftingBase(Condition):
+    def __init__(
+        self,
+        name,
+        tier=TIER.LEGENDARY,
+        rarity=RARITY.MAGIC,
+        rarity_operator=OPERATOR.LTE,
+        ilvl=82,
+    ):
+        self.name = name
+        self.tier = tier
+        self.ilvl = ilvl
+        self.rarity = rarity
+        self.rarity_operator = rarity_operator
+
+    def __str__(self):
+        return formatting.format_conditions(
+            [
+                Rarity(self.rarity, self.rarity_operator),
+                ItemLevel(self.ilvl),
+                BaseType(self.name),
+                TierStyle(self.tier),
+            ]
+        )

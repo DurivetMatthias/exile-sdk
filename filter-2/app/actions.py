@@ -1,6 +1,10 @@
 from app import formatting
 from app.categories import *
-from app.conditions import *
+
+
+class Condition:
+    def __str__(self):
+        raise NotImplementedError
 
 
 class PlayAlertSound(Condition):

@@ -36,12 +36,7 @@ rules.append(
                 OPERATOR.CONTAINS,
             ),
             AbyssStyle(),
-            MultiBaseType(
-                [
-                    "Tribal",
-                ],
-                OPERATOR.NOT_EQUAL,
-            ),
+            MultiBaseType(["Tribal"], OPERATOR.NOT_EQUAL),
         ]
     )
 )
@@ -76,12 +71,7 @@ rules.append(
                 ],
                 OPERATOR.NOT_EQUAL,
             ),
-            MultiBaseType(
-                [
-                    "Core",
-                ],
-                OPERATOR.NOT_EQUAL,
-            ),
+            MultiBaseType(["Core"], OPERATOR.NOT_EQUAL),
             ExpeditionStyle(),
         ]
     )
@@ -186,7 +176,7 @@ rules.append(
 )
 
 # Trial
-if OTHER_TOGGLES.CHAOS in active_other_rules:
+if OTHER_TOGGLES.CHAOS in toggles:
     rules.append(
         Show(
             [
@@ -197,7 +187,7 @@ if OTHER_TOGGLES.CHAOS in active_other_rules:
         )
     )
 # Trial
-if OTHER_TOGGLES.SEKHEMA in active_other_rules:
+if OTHER_TOGGLES.SEKHEMA in toggles:
     rules.append(
         Show(
             [
@@ -263,7 +253,7 @@ rules.append(
 )
 
 
-if OTHER_TOGGLES.BASIC_AUGMENT in active_other_rules:
+if OTHER_TOGGLES.GREATER_RUNE in toggles:
     rules.append(
         Show(
             [
