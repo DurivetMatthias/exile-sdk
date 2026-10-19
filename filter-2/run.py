@@ -4,14 +4,344 @@ from app.blocks import *
 from app.categories import *
 from app.conditions import *
 from app.styles import *
-from sections.toggles import *
+from app.toggles import *
 
 rules = []
 
 # =============================================================================
-# Waystone
+# Other
 # =============================================================================
 
+rules.append(Show([Class("Quest Items"), TierStyle(TIER.EPIC)]))
+rules.append(Show([Class("Instance Local Items"), TierStyle(TIER.EPIC)]))
+
+rules.append(
+    Show(
+        [
+            MultiBaseType(
+                [
+                    "Collarbone",
+                    "Jawbone",
+                    "Rib",
+                    "Cranium",
+                    "Abyss Tablet",
+                    "Omen of Light",
+                    "Omen of Putrefaction",
+                    "Omen of Abyssal Echoes",
+                    "Omen of the Liege",
+                    "Essence of the Abyss",
+                    "Omen of the Sovereign",
+                    "Omen of the Blackblooded",
+                    "Omen of Dextral Necromancy",
+                    "Omen of Sinistral Necromancy",
+                    "Kulemak's Invitation",
+                ],
+                OPERATOR.CONTAINS,
+            ),
+            AbyssStyle(),
+            MultiBaseType(["Tribal"], OPERATOR.NOT_EQUAL),
+        ]
+    )
+)
+
+rules.append(
+    Show(
+        [
+            MultiBaseType(
+                [
+                    "Ore",
+                    "Flux",
+                    "Saga",
+                    "Alloy",
+                    "Crest",
+                    "Verisium",
+                    "Expedition Tablet",
+                    "Expedition Logbook",
+                    "Shattered Triskelion",
+                ],
+                OPERATOR.CONTAINS,
+            ),
+            MultiClass(
+                [
+                    "Boots",
+                    "Helmets",
+                    "Gloves",
+                    "Body Armours",
+                    "Crossbows",
+                    "Spears",
+                    "Shields",
+                ],
+                OPERATOR.NOT_EQUAL,
+            ),
+            MultiBaseType(["Core"], OPERATOR.NOT_EQUAL),
+            ExpeditionStyle(),
+        ]
+    )
+)
+
+rules.append(Show([Class("Omen", OPERATOR.CONTAINS), RitualStyle()]))
+rules.append(
+    Show(
+        [
+            MultiBaseType(
+                [
+                    "Sacred Bloom",
+                    "Ritual tablet",
+                    "Head of the King",
+                    "Call of the Shadows",
+                    "An Audience with the King",
+                ],
+            ),
+            RitualStyle(),
+        ]
+    )
+)
+
+rules.append(
+    Show(
+        [
+            MultiBaseType(
+                [
+                    "Wombgift",
+                    "Catalyst",
+                    "Breachstone",
+                    "Breach Ring",
+                    "Breach Tablet",
+                    "Breachlord Sac",
+                    "Breach Splinter",
+                    "Essence of the Breach",
+                ],
+                OPERATOR.CONTAINS,
+            ),
+            BreachStyle(),
+        ]
+    )
+)
+
+rules.append(
+    Show(
+        [
+            MultiBaseType(
+                [
+                    "Liquid",
+                    "Delirium Tablet",
+                    "Simulacrum",
+                    "Simulacrum Splinter",
+                ],
+                OPERATOR.CONTAINS,
+            ),
+            DeliriumStyle(),
+        ]
+    )
+)
+
+rules.append(
+    Show(
+        [
+            MultiBaseType(
+                [
+                    "Infuser",
+                    "Temple Tablet",
+                    "Vaal Siphoner",
+                    "Architect's Orb",
+                    "Orb of Sacrifice",
+                    "Orb of Extraction",
+                    "Core Destabiliser",
+                    "Atziri's Medallion",
+                    "Vaal Cultivation Orb",
+                    "Crystallised Corruption",
+                ],
+                OPERATOR.CONTAINS,
+            ),
+            VaalStyle(),
+        ]
+    )
+)
+
+rules.append(
+    Show(
+        [
+            MultiBaseType(["Overseer Tablet", "Irradiated Tablet"]),
+            TierStyle(TIER.EPIC),
+        ]
+    )
+)
+
+if OTHER_TOGGLES.CHAOS in toggles:
+    rules.append(
+        Show(
+            [
+                ItemLevel(75),
+                BaseType("Inscribed Ultimatum"),
+                TierStyle(TIER.COMMON),
+            ]
+        )
+    )
+if OTHER_TOGGLES.SEKHEMA in toggles:
+    rules.append(
+        Show(
+            [
+                ItemLevel(75),
+                BaseType("Djinn Barya"),
+                TierStyle(TIER.COMMON),
+            ]
+        )
+    )
+rules.append(
+    Show(
+        [
+            MultiBaseType(["Gold Key", "Silver Key", "Bronze Key"]),
+            TierStyle(TIER.COMMON),
+        ]
+    ),
+)
+rules.append(
+    Show(
+        [
+            MultiBaseType(["Victorious Fate", "Cowardly Fate", "Deadly Fate"]),
+            TierStyle(TIER.LEGENDARY),
+        ]
+    ),
+)
+
+rules.append(
+    Show(
+        [
+            MultiBaseType(
+                [
+                    "Essence",
+                    "Cryptic Key",
+                    "Reliquary Key",
+                ],
+                OPERATOR.CONTAINS,
+            ),
+            TierStyle(TIER.EPIC),
+        ]
+    )
+)
+rules.append(Show([Class("Pinnacle Keys"), TierStyle(TIER.EPIC)]))
+
+rules.append(Hide([Class("Augment")]))
+rules.append(
+    Show(
+        [
+            InCampaign(),
+            MultiBaseType(
+                [
+                    "Iron Rune",
+                    "Desert Rune",
+                    "Storm Rune",
+                    "Glacial Rune",
+                ],
+                OPERATOR.CONTAINS,
+            ),
+            TierStyle(TIER.RARE),
+        ]
+    )
+)
+
+if OTHER_TOGGLES.GREATER_RUNE in toggles:
+    rules.append(
+        Show(
+            [
+                MultiBaseType(
+                    [
+                        "Greater Iron Rune",
+                        "Greater Desert Rune",
+                        "Greater Storm Rune",
+                        "Greater Glacial Rune",
+                    ]
+                ),
+                TierStyle(TIER.EPIC),
+            ]
+        )
+    )
+
+rules.append(
+    Show(
+        [
+            MultiBaseType(
+                [
+                    "Greater Rune of Alacrity",
+                    "Farrul's Rune of the Chase",
+                    "Farrul's Rune of the Hunt",
+                    "Courtesan Mannan's Rune of Cruelty",
+                    "Masterwork Rune",
+                    "Idol of Sirrius",
+                    "Bear Idol",
+                    "Fox Idol",
+                    "Raven-Touched Shard",
+                    "Passion of Aldur",
+                    "Aldur's Legacy",
+                    "Ancient Rune of Shattering",
+                    "Cadigan's Epiphany",
+                    "Astrid's Creativity",
+                    "Soul Core of Tacati",
+                ]
+            ),
+            TierStyle(TIER.LEGENDARY),
+        ]
+    )
+)
+
+rules.append(
+    Show(
+        [
+            MultiClass(["Gloves", "Boots", "Helmets"]),
+            Sockets(2),
+            TierStyle(TIER.LEGENDARY),
+        ]
+    )
+)
+rules.append(
+    Show(
+        [
+            MultiClass(["Body Armours"]),
+            Sockets(3),
+            TierStyle(TIER.LEGENDARY),
+        ]
+    )
+)
+rules.append(
+    Show(
+        [
+            OffhandClasses(),
+            Sockets(2),
+            TierStyle(TIER.LEGENDARY),
+        ]
+    ),
+)
+rules.append(
+    Show(
+        [
+            TwoHandedWeaponClasses(),
+            Sockets(3),
+            TierStyle(TIER.LEGENDARY),
+        ]
+    ),
+)
+rules.append(
+    Show(
+        [
+            OneHandedWeaponClasses(),
+            Sockets(2),
+            TierStyle(TIER.LEGENDARY),
+        ]
+    ),
+)
+
+rules.append(
+    Show(
+        [
+            InActOne(),
+            Rarity(RARITY.RARE),
+            Height(3),
+            VendorStyle(),
+        ]
+    ),
+)
+
+rules.append(Show([Rarity(RARITY.UNIQUE), TierStyle(TIER.EPIC)]))
 rules.append(Show([Class("Waystone"), TierStyle(TIER.EPIC)]))
 
 # =============================================================================
@@ -117,7 +447,6 @@ for toggle, gem in gem_map.items():
             ),
         )
 
-
 # =============================================================================
 # Currency
 # =============================================================================
@@ -172,7 +501,6 @@ currency_map = {
     "Mirror of Kalandra": TIER.LEGENDARY,
 }
 
-
 rules.extend(
     Show([BaseType(currency), TierStyle(tier)])
     for currency, tier in currency_map.items()
@@ -193,12 +521,11 @@ if CURRENCY_TOGGLES.LESSER_JEWELLER in toggles:
 if CURRENCY_TOGGLES.GREATER_JEWELLER in toggles:
     rules.append(Show([BaseType("Greater Jeweller's Orb"), TierStyle(TIER.LEGENDARY)]))
 
-
 # =============================================================================
 # Jewel
 # =============================================================================
 
-rules.append(Hide([Rarity(RARITY.RARE, OPERATOR.LTE), Class("Jewels")]))
+rules.append(Hide([Rarity(RARITY.UNIQUE, OPERATOR.NOT_EQUAL), Class("Jewels")]))
 
 jewel_map = {
     JEWEL_TOGGLES.RUBY: {"base": "Ruby"},
@@ -221,15 +548,7 @@ rules.append(
     )
 )
 
-rules.append(
-    Show(
-        [
-            Class("Jewels"),
-            Rarity(RARITY.UNIQUE),
-            TierStyle(TIER.LEGENDARY),
-        ]
-    )
-)
+rules.append(Show([Class("Jewels"), Rarity(RARITY.UNIQUE), TierStyle(TIER.LEGENDARY)]))
 
 # =============================================================================
 # Charm
@@ -301,7 +620,6 @@ if CHARM_TOGGLES.RITE_OF_PASSAGE in toggles:
         )
     )
 
-
 # =============================================================================
 # Flask
 # =============================================================================
@@ -322,7 +640,7 @@ if FLASK_TOGGLES.ULTIMATE_LIFE in toggles:
     rules.append(
         Show(
             [
-                Rarity(RARITY.MAGIC, OPERATOR.LTE),
+                Rarity(RARITY.UNIQUE, OPERATOR.NOT_EQUAL),
                 BaseType("Ultimate Life Flask"),
                 TierStyle(TIER.COMMON),
             ]
@@ -334,7 +652,7 @@ if FLASK_TOGGLES.T1_ULTIMATE_LIFE in toggles:
         Show(
             [
                 ItemLevel(83),
-                Rarity(RARITY.MAGIC, OPERATOR.LTE),
+                Rarity(RARITY.UNIQUE, OPERATOR.NOT_EQUAL),
                 BaseType("Ultimate Life Flask"),
                 TierStyle(TIER.LEGENDARY),
             ]
@@ -345,7 +663,7 @@ if FLASK_TOGGLES.ULTIMATE_MANA in toggles:
     rules.append(
         Show(
             [
-                Rarity(RARITY.MAGIC, OPERATOR.LTE),
+                Rarity(RARITY.UNIQUE, OPERATOR.NOT_EQUAL),
                 BaseType("Ultimate Life Flask"),
                 TierStyle(TIER.COMMON),
             ]
@@ -357,13 +675,12 @@ if FLASK_TOGGLES.T1_ULTIMATE_MANA in toggles:
         Show(
             [
                 ItemLevel(83),
-                Rarity(RARITY.MAGIC, OPERATOR.LTE),
+                Rarity(RARITY.UNIQUE, OPERATOR.NOT_EQUAL),
                 BaseType("Ultimate Life Flask"),
                 TierStyle(TIER.LEGENDARY),
             ]
         )
     )
-
 
 if FLASK_TOGGLES.LAVIAGNAS_SPIRITS in toggles:
     rules.append(
@@ -425,7 +742,6 @@ if AMULET_TOGGLES.T1_GOOD_BASE in toggles:
         )
     )
 
-
 # =============================================================================
 # Belt
 # =============================================================================
@@ -444,44 +760,12 @@ if BELT_TOGGLES.T1_FINE in toggles:
     )
 
 if BELT_TOGGLES.MAGEBLOOD in toggles:
-    rules.append(
-        Show(
-            [
-                BaseType("Utility Belt"),
-                Rarity(RARITY.UNIQUE),
-                TierStyle(TIER.LEGENDARY),
-            ]
-        )
-    )
-    rules.append(
-        Show(
-            [
-                BaseType("Utility Belt"),
-                Rarity(RARITY.NORMAL),
-                TierStyle(TIER.LEGENDARY),
-            ]
-        )
-    )
+    rules.append(Show([UniqueBase("Utility Belt")]))
+    rules.append(Show([ChanceBase("Utility Belt")]))
 
 if BELT_TOGGLES.HEADHUNTER in toggles:
-    rules.append(
-        Show(
-            [
-                BaseType("Heavy Belt"),
-                Rarity(RARITY.UNIQUE),
-                TierStyle(TIER.LEGENDARY),
-            ]
-        )
-    )
-    rules.append(
-        Show(
-            [
-                BaseType("Heavy Belt"),
-                Rarity(RARITY.NORMAL),
-                TierStyle(TIER.LEGENDARY),
-            ]
-        )
-    )
+    rules.append(Show([UniqueBase("Heavy Belt")]))
+    rules.append(Show([ChanceBase("Heavy Belt")]))
 
 # =============================================================================
 # Ring
@@ -538,34 +822,14 @@ if HELMET_TOGGLES.ANY in toggles:
     rules.append(Show([PureArmour(), Class("Helmets"), TierStyle(TIER.EPIC)]))
 
 if HELMET_TOGGLES.IMPERIAL in toggles:
-    rules.append(
-        Show(
-            [
-                BaseType("Imperial Greathelm"),
-                TierStyle(TIER.EPIC),
-            ]
-        )
-    )
+    rules.append(Show([CraftingBase("Imperial Greathelm")]))
 
 if HELMET_TOGGLES.T1_IMPERIAL in toggles:
-    rules.append(
-        Show(
-            [
-                ItemLevel(82),
-                BaseType("Imperial Greathelm"),
-                TierStyle(TIER.LEGENDARY),
-            ]
-        )
-    )
+    rules.append(Show([PerfectCraftingBase("Imperial Greathelm")]))
 
 if HELMET_TOGGLES.CONSTRICTING_COMMAND in toggles:
-    rules.append(
-        Show([BaseType("Viper Cap"), Rarity(RARITY.UNIQUE), TierStyle(TIER.LEGENDARY)])
-    )
-
-    rules.append(
-        Show([BaseType("Viper Cap"), Rarity(RARITY.NORMAL), TierStyle(TIER.LEGENDARY)])
-    )
+    rules.append(Show([UniqueBase("Viper Cap")]))
+    rules.append(Show([ChanceBase("Viper Cap")]))
 
 # =============================================================================
 # Gloves
@@ -596,12 +860,10 @@ if GLOVES_TOGGLES.ANY in toggles:
     rules.append(Show([PureArmour(), Class("Gloves"), TierStyle(TIER.EPIC)]))
 
 if GLOVES_TOGGLES.MASSIVE in toggles:
-    rules.append(Show([BaseType("Massive Mitts"), TierStyle(TIER.EPIC)]))
+    rules.append(Show([CraftingBase("Massive Mitts")]))
 
 if GLOVES_TOGGLES.T1_MASSIVE in toggles:
-    rules.append(
-        Show([ItemLevel(82), BaseType("Massive Mitts"), TierStyle(TIER.LEGENDARY)])
-    )
+    rules.append(Show([PerfectCraftingBase("Massive Mitts")]))
 
 # =============================================================================
 # Boots
@@ -647,33 +909,14 @@ if BODY_TOGGLES.ANY in toggles:
     rules.append(Show([PureArmour(), Class("Body Armours"), TierStyle(TIER.EPIC)]))
 
 if BODY_TOGGLES.SOLDIER in toggles:
-    rules.append(Show([BaseType("Soldier Cuirass"), TierStyle(TIER.EPIC)]))
+    rules.append(Show([CraftingBase("Soldier Cuirass")]))
 
 if BODY_TOGGLES.T1_SOLDIER in toggles:
-    rules.append(
-        Show([ItemLevel(82), BaseType("Soldier Cuirass"), TierStyle(TIER.LEGENDARY)])
-    )
+    rules.append(Show([PerfectCraftingBase("Soldier Cuirass")]))
 
 if BODY_TOGGLES.BRASS_DOME in toggles:
-    rules.append(
-        Show(
-            [
-                BaseType("Champion Cuirass"),
-                Rarity(RARITY.UNIQUE),
-                TierStyle(TIER.LEGENDARY),
-            ]
-        )
-    )
-
-    rules.append(
-        Show(
-            [
-                BaseType("Champion Cuirass"),
-                Rarity(RARITY.NORMAL),
-                TierStyle(TIER.LEGENDARY),
-            ]
-        )
-    )
+    rules.append(Show([UniqueBase("Champion Cuirass")]))
+    rules.append(Show([ChanceBase("Champion Cuirass")]))
 
 # =============================================================================
 # Mace
@@ -704,14 +947,10 @@ if SHIELD_TOGGLES.ANY in toggles:
     rules.append(Show([PureArmour(), Class("Shields"), TierStyle(TIER.EPIC)]))
 
 if SHIELD_TOGGLES.TAWHOAN in toggles:
-    rules.append(Show([BaseType("Tawhoan Tower Shield"), TierStyle(TIER.EPIC)]))
+    rules.append(Show([CraftingBase("Tawhoan Tower Shield")]))
 
 if SHIELD_TOGGLES.T1_TAWHOAN in toggles:
-    rules.append(
-        Show(
-            [ItemLevel(82), BaseType("Tawhoan Tower Shield"), TierStyle(TIER.LEGENDARY)]
-        )
-    )
+    rules.append(Show([PerfectCraftingBase("Tawhoan Tower Shield")]))
 
 # =============================================================================
 # Bow

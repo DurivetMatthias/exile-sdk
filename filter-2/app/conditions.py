@@ -749,8 +749,6 @@ class CraftingBase(Condition):
         self.ilvl = ilvl
         self.rarity = rarity
         self.rarity_operator = rarity_operator
-        print("Made a crafting base")
-        print("name:", name)
 
     def __str__(self):
         return formatting.format_conditions(
@@ -784,6 +782,36 @@ class PerfectCraftingBase(Condition):
                 Rarity(self.rarity, self.rarity_operator),
                 ItemLevel(self.ilvl),
                 BaseType(self.name),
+                TierStyle(self.tier),
+            ]
+        )
+
+
+class UniqueBase(Condition):
+    def __init__(self, name, tier=TIER.LEGENDARY):
+        self.name = name
+        self.tier = tier
+
+    def __str__(self):
+        return formatting.format_conditions(
+            [
+                BaseType(self.name),
+                Rarity(RARITY.UNIQUE),
+                TierStyle(self.tier),
+            ]
+        )
+
+
+class ChanceBase(Condition):
+    def __init__(self, name, tier=TIER.LEGENDARY):
+        self.name = name
+        self.tier = tier
+
+    def __str__(self):
+        return formatting.format_conditions(
+            [
+                BaseType(self.name),
+                Rarity(RARITY.NORMAL),
                 TierStyle(self.tier),
             ]
         )
