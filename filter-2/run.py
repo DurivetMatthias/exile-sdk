@@ -653,14 +653,20 @@ rules.append(Hide([AnyClass("Helmets")]))
 if HELMET_TOGGLES.ANY_ARMOUR in toggles:
     rules.append(Show([PureArmour(), AnyClass("Helmets")]))
 
-if HELMET_TOGGLES.ANY_EVASION in toggles:
-    rules.append(Show([PureEvasion(), AnyClass("Helmets")]))
-
 if HELMET_TOGGLES.IMPERIAL in toggles:
     rules.append(Show([CraftingBase("Imperial Greathelm")]))
 
 if HELMET_TOGGLES.T1_IMPERIAL in toggles:
     rules.append(Show([PerfectCraftingBase("Imperial Greathelm")]))
+
+if HELMET_TOGGLES.ANY_EVASION in toggles:
+    rules.append(Show([PureEvasion(), AnyClass("Helmets")]))
+
+if HELMET_TOGGLES.FREEBOOTER in toggles:
+    rules.append(Show([CraftingBase("Freebooter Cap")]))
+
+if HELMET_TOGGLES.T1_FREEBOOTER in toggles:
+    rules.append(Show([PerfectCraftingBase("Freebooter Cap")]))
 
 if HELMET_TOGGLES.CONSTRICTING_COMMAND in toggles:
     rules.append(Show([UniqueBase("Viper Cap")]))
@@ -695,14 +701,20 @@ rules.append(
 if GLOVES_TOGGLES.ANY_ARMOUR in toggles:
     rules.append(Show([PureArmour(), AnyClass("Gloves")]))
 
-if GLOVES_TOGGLES.ANY_EVASION in toggles:
-    rules.append(Show([PureEvasion(), AnyClass("Gloves")]))
-
 if GLOVES_TOGGLES.MASSIVE in toggles:
     rules.append(Show([CraftingBase("Massive Mitts")]))
 
 if GLOVES_TOGGLES.T1_MASSIVE in toggles:
     rules.append(Show([PerfectCraftingBase("Massive Mitts")]))
+
+if GLOVES_TOGGLES.ANY_EVASION in toggles:
+    rules.append(Show([PureEvasion(), AnyClass("Gloves")]))
+
+if GLOVES_TOGGLES.POLISHED in toggles:
+    rules.append(Show([CraftingBase("Polished Bracers")]))
+
+if GLOVES_TOGGLES.T1_POLISHED in toggles:
+    rules.append(Show([PerfectCraftingBase("Polished Bracers")]))
 
 # =============================================================================
 # Boots
@@ -733,14 +745,20 @@ rules.append(
 if BOOTS_TOGGLES.ANY_ARMOUR in toggles:
     rules.append(Show([PureArmour(), AnyClass("Boots")]))
 
-if BOOTS_TOGGLES.ANY_EVASION in toggles:
-    rules.append(Show([PureEvasion(), AnyClass("Boots")]))
-
 if BOOTS_TOGGLES.TASALIAN in toggles:
     rules.append(Show([CraftingBase("Tasalian Greaves")]))
 
 if BOOTS_TOGGLES.T1_TASALIAN in toggles:
     rules.append(Show([PerfectCraftingBase("Tasalian Greaves")]))
+
+if BOOTS_TOGGLES.ANY_EVASION in toggles:
+    rules.append(Show([PureEvasion(), AnyClass("Boots")]))
+
+if BOOTS_TOGGLES.DRAKESKIN in toggles:
+    rules.append(Show([CraftingBase("Drakeskin Boots")]))
+
+if BOOTS_TOGGLES.T1_DRAKESKIN in toggles:
+    rules.append(Show([PerfectCraftingBase("Drakeskin Boots")]))
 
 # =============================================================================
 # Body Armour
@@ -751,14 +769,20 @@ rules.append(Hide([AnyClass("Body Armours")]))
 if BODY_TOGGLES.ANY_ARMOUR in toggles:
     rules.append(Show([PureArmour(), AnyClass("Body Armours")]))
 
-if BODY_TOGGLES.ANY_EVASION in toggles:
-    rules.append(Show([PureEvasion(), AnyClass("Body Armours")]))
-
 if BODY_TOGGLES.SOLDIER in toggles:
     rules.append(Show([CraftingBase("Soldier Cuirass")]))
 
 if BODY_TOGGLES.T1_SOLDIER in toggles:
     rules.append(Show([PerfectCraftingBase("Soldier Cuirass")]))
+
+if BODY_TOGGLES.ANY_EVASION in toggles:
+    rules.append(Show([PureEvasion(), AnyClass("Body Armours")]))
+
+if BODY_TOGGLES.CORSAIR in toggles:
+    rules.append(Show([CraftingBase("Corsair Coat")]))
+
+if BODY_TOGGLES.T1_CORSAIR in toggles:
+    rules.append(Show([PerfectCraftingBase("Corsair Coat")]))
 
 if BODY_TOGGLES.BRASS_DOME in toggles:
     rules.append(Show([UniqueBase("Champion Cuirass")]))

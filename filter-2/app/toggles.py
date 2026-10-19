@@ -78,31 +78,39 @@ class RING_TOGGLES(StrEnum):
 
 class HELMET_TOGGLES(StrEnum):
     ANY_ARMOUR = "Any Armour base"
-    ANY_EVASION = "Any Evasion base"
     IMPERIAL = "Imperial Helmet"
     T1_IMPERIAL = "Imperial Helmet with maximum Item Level"
+    ANY_EVASION = "Any Evasion base"
+    FREEBOOTER = "Freebooter Cap"
+    T1_FREEBOOTER = "Freebooter Cap with maximum Item Level"
     CONSTRICTING_COMMAND = "Constricting Command"
 
 
 class GLOVES_TOGGLES(StrEnum):
     ANY_ARMOUR = "Any Armour base"
-    ANY_EVASION = "Any Evasion base"
     MASSIVE = "Massive Mitts"
     T1_MASSIVE = "Massive Mitts with maximum Item Level"
+    ANY_EVASION = "Any Evasion base"
+    POLISHED = "Polished Bracers"
+    T1_POLISHED = "Polished Bracers with maximum Item Level"
 
 
 class BOOTS_TOGGLES(StrEnum):
     ANY_ARMOUR = "Any Armour base"
+    TASALIAN = "Tasalian Greaves"
+    T1_TASALIAN = "Tasalian Greaves with maximum Item Level"
     ANY_EVASION = "Any Evasion base"
-    TASALIAN = "Tasalian Boots"
-    T1_TASALIAN = "Tasalian Boots with maximum Item Level"
+    DRAKESKIN = "Drakeskin Boots"
+    T1_DRAKESKIN = "Drakeskin Boots with maximum Item Level"
 
 
 class BODY_TOGGLES(StrEnum):
     ANY_ARMOUR = "Any Armour base"
-    ANY_EVASION = "Any Evasion base"
     SOLDIER = "Soldier Cuirass"
     T1_SOLDIER = "Soldier Cuirass with maximum Item Level"
+    ANY_EVASION = "Any Evasion base"
+    CORSAIR = "Corsair Coat"
+    T1_CORSAIR = "Corsair Coat with maximum Item Level"
     BRASS_DOME = "Brass Dome"
 
 
@@ -204,25 +212,33 @@ toggles = [
     RING_TOGGLES.KALANDRAS_TOUCH,
     # Helmet
     # HELMET_TOGGLES.ANY_ARMOUR,
-    HELMET_TOGGLES.ANY_EVASION,
     # HELMET_TOGGLES.IMPERIAL,
     # HELMET_TOGGLES.T1_IMPERIAL,
+    HELMET_TOGGLES.ANY_EVASION,
+    HELMET_TOGGLES.FREEBOOTER,
+    HELMET_TOGGLES.T1_FREEBOOTER,
     HELMET_TOGGLES.CONSTRICTING_COMMAND,
     # Gloves
     # GLOVES_TOGGLES.ANY_ARMOUR,
-    GLOVES_TOGGLES.ANY_EVASION,
     # GLOVES_TOGGLES.MASSIVE,
     # GLOVES_TOGGLES.T1_MASSIVE,
+    GLOVES_TOGGLES.ANY_EVASION,
+    GLOVES_TOGGLES.POLISHED,
+    GLOVES_TOGGLES.T1_POLISHED,
     # Boots
     # BOOTS_TOGGLES.ANY_ARMOUR,
-    BOOTS_TOGGLES.ANY_EVASION,
     # BOOTS_TOGGLES.TASALIAN,
     # BOOTS_TOGGLES.T1_TASALIAN,
+    BOOTS_TOGGLES.ANY_EVASION,
+    BOOTS_TOGGLES.DRAKESKIN,
+    BOOTS_TOGGLES.T1_DRAKESKIN,
     # Body Armour
     # BODY_TOGGLES.ANY_ARMOUR,
-    BODY_TOGGLES.ANY_EVASION,
     # BODY_TOGGLES.SOLDIER,
     # BODY_TOGGLES.T1_SOLDIER,
+    BODY_TOGGLES.ANY_EVASION,
+    BODY_TOGGLES.CORSAIR,
+    BODY_TOGGLES.T1_CORSAIR,
     # BODY_TOGGLES.BRASS_DOME,
     # Mace
     # MACE_TOGGLES.ANY,
