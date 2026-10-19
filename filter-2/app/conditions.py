@@ -742,11 +742,9 @@ class CraftingBase(Condition):
         tier=TIER.EPIC,
         rarity=RARITY.MAGIC,
         rarity_operator=OPERATOR.LTE,
-        ilvl=1,
     ):
         self.name = name
         self.tier = tier
-        self.ilvl = ilvl
         self.rarity = rarity
         self.rarity_operator = rarity_operator
 
@@ -754,8 +752,30 @@ class CraftingBase(Condition):
         return formatting.format_conditions(
             [
                 Rarity(self.rarity, self.rarity_operator),
-                ItemLevel(self.ilvl),
                 BaseType(self.name),
+                TierStyle(self.tier),
+            ]
+        )
+
+
+class MultiCraftingBase(Condition):
+    def __init__(
+        self,
+        names,
+        tier=TIER.EPIC,
+        rarity=RARITY.MAGIC,
+        rarity_operator=OPERATOR.LTE,
+    ):
+        self.names = names
+        self.tier = tier
+        self.rarity = rarity
+        self.rarity_operator = rarity_operator
+
+    def __str__(self):
+        return formatting.format_conditions(
+            [
+                Rarity(self.rarity, self.rarity_operator),
+                MultiBaseType(self.names),
                 TierStyle(self.tier),
             ]
         )
@@ -787,6 +807,32 @@ class PerfectCraftingBase(Condition):
         )
 
 
+class MultiPerfectCraftingBase(Condition):
+    def __init__(
+        self,
+        names,
+        tier=TIER.LEGENDARY,
+        rarity=RARITY.MAGIC,
+        rarity_operator=OPERATOR.LTE,
+        ilvl=82,
+    ):
+        self.names = names
+        self.tier = tier
+        self.ilvl = ilvl
+        self.rarity = rarity
+        self.rarity_operator = rarity_operator
+
+    def __str__(self):
+        return formatting.format_conditions(
+            [
+                Rarity(self.rarity, self.rarity_operator),
+                ItemLevel(self.ilvl),
+                MultiBaseType(self.names),
+                TierStyle(self.tier),
+            ]
+        )
+
+
 class UniqueBase(Condition):
     def __init__(self, name, tier=TIER.LEGENDARY):
         self.name = name
@@ -812,6 +858,21 @@ class ChanceBase(Condition):
             [
                 BaseType(self.name),
                 Rarity(RARITY.NORMAL),
+                TierStyle(self.tier),
+            ]
+        )
+
+
+class AnyClass(Condition):
+    def __init__(self, name, tier=TIER.EPIC):
+        self.name = name
+        self.tier = tier
+
+    def __str__(self):
+        return formatting.format_conditions(
+            [
+                Rarity(RARITY.UNIQUE, OPERATOR.NOT_EQUAL),
+                Class(self.name),
                 TierStyle(self.tier),
             ]
         )

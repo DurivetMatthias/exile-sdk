@@ -208,11 +208,7 @@ rules.append(
     Show(
         [
             MultiBaseType(
-                [
-                    "Essence",
-                    "Cryptic Key",
-                    "Reliquary Key",
-                ],
+                ["Essence", "Cryptic Key", "Reliquary Key"],
                 OPERATOR.CONTAINS,
             ),
             TierStyle(TIER.EPIC),
@@ -229,9 +225,12 @@ rules.append(
             MultiBaseType(
                 [
                     "Iron Rune",
-                    "Desert Rune",
                     "Storm Rune",
+                    "Desert Rune",
                     "Glacial Rune",
+                    "Adept Rune",
+                    "Robust Rune",
+                    "Resolve Rune",
                 ],
                 OPERATOR.CONTAINS,
             ),
@@ -256,6 +255,9 @@ if OTHER_TOGGLES.GREATER_RUNE in toggles:
             ]
         )
     )
+
+if OTHER_TOGGLES.UNIQUES in toggles:
+    rules.append(Show([Rarity(RARITY.UNIQUE), TierStyle(TIER.EPIC)]))
 
 rules.append(
     Show(
@@ -293,56 +295,18 @@ rules.append(
         ]
     )
 )
-rules.append(
-    Show(
-        [
-            MultiClass(["Body Armours"]),
-            Sockets(3),
-            TierStyle(TIER.LEGENDARY),
-        ]
-    )
-)
-rules.append(
-    Show(
-        [
-            OffhandClasses(),
-            Sockets(2),
-            TierStyle(TIER.LEGENDARY),
-        ]
-    ),
-)
-rules.append(
-    Show(
-        [
-            TwoHandedWeaponClasses(),
-            Sockets(3),
-            TierStyle(TIER.LEGENDARY),
-        ]
-    ),
-)
-rules.append(
-    Show(
-        [
-            OneHandedWeaponClasses(),
-            Sockets(2),
-            TierStyle(TIER.LEGENDARY),
-        ]
-    ),
-)
 
 rules.append(
-    Show(
-        [
-            InActOne(),
-            Rarity(RARITY.RARE),
-            Height(3),
-            VendorStyle(),
-        ]
-    ),
+    Show([MultiClass(["Body Armours"]), Sockets(3), TierStyle(TIER.LEGENDARY)])
 )
 
-rules.append(Show([Rarity(RARITY.UNIQUE), TierStyle(TIER.EPIC)]))
-rules.append(Show([Class("Waystone"), TierStyle(TIER.EPIC)]))
+rules.append(Show([OffhandClasses(), Sockets(2), TierStyle(TIER.LEGENDARY)]))
+rules.append(Show([TwoHandedWeaponClasses(), Sockets(3), TierStyle(TIER.LEGENDARY)]))
+rules.append(Show([OneHandedWeaponClasses(), Sockets(2), TierStyle(TIER.LEGENDARY)]))
+
+rules.append(Show([InActOne(), Rarity(RARITY.RARE), VendorStyle()]))
+
+rules.append(Show([Class("Waystones"), TierStyle(TIER.EPIC)]))
 
 # =============================================================================
 # Gem
@@ -353,12 +317,7 @@ rules.append(
 )
 
 rules.append(
-    Show(
-        [
-            MultiClass(["Support Gems", "Skill Gems"]),
-            TierStyle(TIER.LEGENDARY),
-        ]
-    ),
+    Show([MultiClass(["Support Gems", "Skill Gems"]), TierStyle(TIER.LEGENDARY)])
 )
 
 if GEM_TOGGLES.ANY in toggles:
@@ -508,16 +467,22 @@ rules.extend(
 
 if CURRENCY_TOGGLES.SCROLL_OF_WISDOM in toggles:
     rules.append(Show([BaseType("Scroll of Wisdom"), TierStyle(TIER.COMMON)]))
+
 if CURRENCY_TOGGLES.ARTIFICER in toggles:
     rules.append(Show([BaseType("Artificer's Orb"), TierStyle(TIER.RARE)]))
+
 if CURRENCY_TOGGLES.ARCANIST in toggles:
     rules.append(Show([BaseType("Arcanist's Etcher"), TierStyle(TIER.RARE)]))
+
 if CURRENCY_TOGGLES.ARMOURER in toggles:
     rules.append(Show([BaseType("Armourer's Scrap"), TierStyle(TIER.RARE)]))
+
 if CURRENCY_TOGGLES.BLACKSMITH in toggles:
     rules.append(Show([BaseType("Blacksmith's Whetstone"), TierStyle(TIER.RARE)]))
+
 if CURRENCY_TOGGLES.LESSER_JEWELLER in toggles:
     rules.append(Show([BaseType("Lesser Jeweller's Orb"), TierStyle(TIER.LEGENDARY)]))
+
 if CURRENCY_TOGGLES.GREATER_JEWELLER in toggles:
     rules.append(Show([BaseType("Greater Jeweller's Orb"), TierStyle(TIER.LEGENDARY)]))
 
@@ -525,28 +490,19 @@ if CURRENCY_TOGGLES.GREATER_JEWELLER in toggles:
 # Jewel
 # =============================================================================
 
-rules.append(Hide([Rarity(RARITY.UNIQUE, OPERATOR.NOT_EQUAL), Class("Jewels")]))
+rules.append(Hide([AnyClass("Jewels")]))
 
-jewel_map = {
-    JEWEL_TOGGLES.RUBY: {"base": "Ruby"},
-    JEWEL_TOGGLES.SAPPHIRE: {"base": "Sapphire"},
-    JEWEL_TOGGLES.EMERALD: {"base": "Emerald"},
-}
+if JEWEL_TOGGLES.RUBY in toggles:
+    rules.append(Show([BaseType("Ruby"), TierStyle(TIER.EPIC)]))
 
-for toggle, jewel in jewel_map.items():
-    if toggle in toggles:
-        rules.append(Show([BaseType(jewel["base"]), TierStyle(TIER.EPIC)]))
+if JEWEL_TOGGLES.SAPPHIRE in toggles:
+    rules.append(Show([BaseType("Sapphire"), TierStyle(TIER.EPIC)]))
 
-rules.append(
-    Show(
-        [
-            MultiBaseType(
-                ["Time-Lost Ruby", "Time-Lost Emerald", "Time-Lost Sapphire"]
-            ),
-            TierStyle(TIER.LEGENDARY),
-        ]
-    )
-)
+if JEWEL_TOGGLES.EMERALD in toggles:
+    rules.append(Show([BaseType("Emerald"), TierStyle(TIER.EPIC)]))
+
+time_lost_bases = ["Time-Lost Ruby", "Time-Lost Emerald", "Time-Lost Sapphire"]
+rules.append(Show([MultiBaseType(time_lost_bases), TierStyle(TIER.LEGENDARY)]))
 
 rules.append(Show([Class("Jewels"), Rarity(RARITY.UNIQUE), TierStyle(TIER.LEGENDARY)]))
 
@@ -554,71 +510,40 @@ rules.append(Show([Class("Jewels"), Rarity(RARITY.UNIQUE), TierStyle(TIER.LEGEND
 # Charm
 # =============================================================================
 
-rules.append(Hide([Class("Charms")]))
+rules.append(Hide([AnyClass("Charms")]))
 
 if CHARM_TOGGLES.ANY in toggles:
-    rules.append(Show([Class("Charms"), TierStyle(TIER.EPIC)]))
+    rules.append(Show([AnyClass("Charms")]))
 
-charm_map = {
-    CHARM_TOGGLES.ANTIDOTE: {"base": "Antidote Charm"},
-    CHARM_TOGGLES.DOUSING: {"base": "Dousing Charm"},
-    CHARM_TOGGLES.STAUNCHING: {"base": "Staunching Charm"},
-    CHARM_TOGGLES.THAWING: {"base": "Thawing Charm"},
-}
+if CHARM_TOGGLES.ANTIDOTE in toggles:
+    rules.append(Show([CraftingBase("Antidote Charm")]))
 
-for toggle, charm in charm_map.items():
-    if toggle in toggles:
-        rules.append(
-            Show(
-                [
-                    Rarity(RARITY.MAGIC, OPERATOR.LTE),
-                    BaseType(charm["base"]),
-                    TierStyle(TIER.EPIC),
-                ]
-            )
-        )
+if CHARM_TOGGLES.DOUSING in toggles:
+    rules.append(Show([CraftingBase("Dousing Charm")]))
 
-charm_map = {
-    CHARM_TOGGLES.T1_ANTIDOTE: {"base": "Antidote Charm"},
-    CHARM_TOGGLES.T1_DOUSING: {"base": "Dousing Charm"},
-    CHARM_TOGGLES.T1_STAUNCHING: {"base": "Staunching Charm"},
-    CHARM_TOGGLES.T1_THAWING: {"base": "Thawing Charm"},
-}
+if CHARM_TOGGLES.STAUNCHING in toggles:
+    rules.append(Show([CraftingBase("Staunching Charm")]))
 
-for toggle, charm in charm_map.items():
-    if toggle in toggles:
-        rules.append(
-            Show(
-                [
-                    Rarity(RARITY.MAGIC, OPERATOR.LTE),
-                    ItemLevel(83),
-                    BaseType(charm["base"]),
-                    TierStyle(TIER.LEGENDARY),
-                ]
-            )
-        )
+if CHARM_TOGGLES.THAWING in toggles:
+    rules.append(Show([CraftingBase("Thawing Charm")]))
+
+if CHARM_TOGGLES.T1_ANTIDOTE in toggles:
+    rules.append(Show([PerfectCraftingBase("Antidote Charm", ilvl=83)]))
+
+if CHARM_TOGGLES.T1_DOUSING in toggles:
+    rules.append(Show([PerfectCraftingBase("Dousing Charm", ilvl=83)]))
+
+if CHARM_TOGGLES.T1_STAUNCHING in toggles:
+    rules.append(Show([PerfectCraftingBase("Staunching Charm", ilvl=83)]))
+
+if CHARM_TOGGLES.T1_THAWING in toggles:
+    rules.append(Show([PerfectCraftingBase("Thawing Charm", ilvl=83)]))
 
 if CHARM_TOGGLES.UNIQUE_ANTIDOTE in toggles:
-    rules.append(
-        Show(
-            [
-                Rarity(RARITY.UNIQUE),
-                BaseType("Antidote Charm"),
-                TierStyle(TIER.LEGENDARY),
-            ]
-        )
-    )
+    rules.append(Show([UniqueBase("Antidote Charm")]))
 
 if CHARM_TOGGLES.RITE_OF_PASSAGE in toggles:
-    rules.append(
-        Show(
-            [
-                Rarity(RARITY.UNIQUE),
-                BaseType("Golden Charm"),
-                TierStyle(TIER.LEGENDARY),
-            ]
-        )
-    )
+    rules.append(Show([UniqueBase("Golden Charm")]))
 
 # =============================================================================
 # Flask
@@ -628,87 +553,32 @@ rules.append(Hide([MultiClass(["Life Flasks", "Mana Flasks"])]))
 
 if FLASK_TOGGLES.ANY in toggles:
     rules.append(
-        Show(
-            [
-                MultiClass(["Life Flasks", "Mana Flasks"]),
-                TierStyle(TIER.COMMON),
-            ]
-        )
+        Show([MultiClass(["Life Flasks", "Mana Flasks"]), TierStyle(TIER.COMMON)])
     )
 
 if FLASK_TOGGLES.ULTIMATE_LIFE in toggles:
-    rules.append(
-        Show(
-            [
-                Rarity(RARITY.UNIQUE, OPERATOR.NOT_EQUAL),
-                BaseType("Ultimate Life Flask"),
-                TierStyle(TIER.COMMON),
-            ]
-        )
-    )
+    rules.append(Show([CraftingBase("Ultimate Life Flask")]))
 
 if FLASK_TOGGLES.T1_ULTIMATE_LIFE in toggles:
-    rules.append(
-        Show(
-            [
-                ItemLevel(83),
-                Rarity(RARITY.UNIQUE, OPERATOR.NOT_EQUAL),
-                BaseType("Ultimate Life Flask"),
-                TierStyle(TIER.LEGENDARY),
-            ]
-        )
-    )
+    rules.append(Show([PerfectCraftingBase("Ultimate Life Flask", ilvl=83)]))
 
 if FLASK_TOGGLES.ULTIMATE_MANA in toggles:
-    rules.append(
-        Show(
-            [
-                Rarity(RARITY.UNIQUE, OPERATOR.NOT_EQUAL),
-                BaseType("Ultimate Life Flask"),
-                TierStyle(TIER.COMMON),
-            ]
-        )
-    )
+    rules.append(Show([CraftingBase("Ultimate Mana Flask")]))
 
 if FLASK_TOGGLES.T1_ULTIMATE_MANA in toggles:
-    rules.append(
-        Show(
-            [
-                ItemLevel(83),
-                Rarity(RARITY.UNIQUE, OPERATOR.NOT_EQUAL),
-                BaseType("Ultimate Life Flask"),
-                TierStyle(TIER.LEGENDARY),
-            ]
-        )
-    )
+    rules.append(Show([PerfectCraftingBase("Ultimate Mana Flask", ilvl=83)]))
 
 if FLASK_TOGGLES.LAVIAGNAS_SPIRITS in toggles:
-    rules.append(
-        Show(
-            [
-                Rarity(RARITY.UNIQUE),
-                BaseType("Gargantuan Mana Flask"),
-                TierStyle(TIER.LEGENDARY),
-            ]
-        )
-    )
+    rules.append(Show([UniqueBase("Gargantuan Mana Flask")]))
 
 # =============================================================================
 # Amulet
 # =============================================================================
 
-rules.append(Hide([Class("Amulets")]))
+rules.append(Hide([AnyClass("Amulets")]))
 
 if AMULET_TOGGLES.ANY in toggles:
-    rules.append(
-        Show(
-            [
-                Rarity(RARITY.RARE, OPERATOR.LTE),
-                Class("Amulets"),
-                TierStyle(TIER.EPIC),
-            ]
-        )
-    )
+    rules.append(Show([AnyClass("Amulets")]))
 
 good_bases = [
     "Jade Amulet",
@@ -720,44 +590,25 @@ good_bases = [
 ]
 
 if AMULET_TOGGLES.GOOD_BASE in toggles:
-    rules.append(
-        Show(
-            [
-                Rarity(RARITY.RARE, OPERATOR.LTE),
-                MultiBaseType(good_bases),
-                TierStyle(TIER.EPIC),
-            ]
-        )
-    )
+    rules.append(Show([MultiCraftingBase(good_bases)]))
 
 if AMULET_TOGGLES.T1_GOOD_BASE in toggles:
-    rules.append(
-        Show(
-            [
-                Rarity(RARITY.RARE, OPERATOR.LTE),
-                ItemLevel(82),
-                MultiBaseType(good_bases),
-                TierStyle(TIER.LEGENDARY),
-            ]
-        )
-    )
+    rules.append(Show([MultiPerfectCraftingBase(good_bases)]))
 
 # =============================================================================
 # Belt
 # =============================================================================
 
-rules.append(Hide([Class("Belts")]))
+rules.append(Hide([AnyClass("Belts")]))
 
 if BELT_TOGGLES.ANY in toggles:
-    rules.append(Show([Class("Belts"), TierStyle(TIER.EPIC)]))
+    rules.append(Show([AnyClass("Belts")]))
 
 if BELT_TOGGLES.FINE in toggles:
-    rules.append(Show([BaseType("Fine Belt"), TierStyle(TIER.EPIC)]))
+    rules.append(Show([CraftingBase("Fine Belt")]))
 
 if BELT_TOGGLES.T1_FINE in toggles:
-    rules.append(
-        Show([ItemLevel(82), BaseType("Fine Belt"), TierStyle(TIER.LEGENDARY)])
-    )
+    rules.append(Show([PerfectCraftingBase("Fine Belt")]))
 
 if BELT_TOGGLES.MAGEBLOOD in toggles:
     rules.append(Show([UniqueBase("Utility Belt")]))
@@ -771,10 +622,10 @@ if BELT_TOGGLES.HEADHUNTER in toggles:
 # Ring
 # =============================================================================
 
-rules.append(Hide([Class("Rings")]))
+rules.append(Hide([AnyClass("Rings")]))
 
 if RING_TOGGLES.ANY in toggles:
-    rules.append(Show([Class("Rings"), TierStyle(TIER.EPIC)]))
+    rules.append(Show([AnyClass("Rings")]))
 
 resistance_bases = [
     "Ruby Ring",
@@ -785,41 +636,25 @@ resistance_bases = [
 ]
 
 if RING_TOGGLES.RESISTANCE_BASE in toggles:
-    rules.append(
-        Show(
-            [
-                Rarity(RARITY.MAGIC, OPERATOR.LTE),
-                MultiBaseType(resistance_bases),
-                TierStyle(TIER.EPIC),
-            ]
-        )
-    )
+    rules.append(Show([MultiCraftingBase(resistance_bases)]))
 
 if RING_TOGGLES.T1_RESISTANCE_BASE in toggles:
-    rules.append(
-        Show(
-            [
-                Rarity(RARITY.MAGIC, OPERATOR.LTE),
-                ItemLevel(82),
-                MultiBaseType(resistance_bases),
-                TierStyle(TIER.LEGENDARY),
-            ]
-        )
-    )
+    rules.append(Show([MultiPerfectCraftingBase(resistance_bases)]))
 
 if RING_TOGGLES.KALANDRAS_TOUCH in toggles:
-    rules.append(
-        Show([Rarity(RARITY.UNIQUE), BaseType("Ring"), TierStyle(TIER.LEGENDARY)])
-    )
+    rules.append(Show([UniqueBase("Ring")]))
 
 # =============================================================================
 # Helmet
 # =============================================================================
 
-rules.append(Hide([Class("Helmets")]))
+rules.append(Hide([AnyClass("Helmets")]))
 
-if HELMET_TOGGLES.ANY in toggles:
-    rules.append(Show([PureArmour(), Class("Helmets"), TierStyle(TIER.EPIC)]))
+if HELMET_TOGGLES.ANY_ARMOUR in toggles:
+    rules.append(Show([PureArmour(), AnyClass("Helmets")]))
+
+if HELMET_TOGGLES.ANY_EVASION in toggles:
+    rules.append(Show([PureEvasion(), AnyClass("Helmets")]))
 
 if HELMET_TOGGLES.IMPERIAL in toggles:
     rules.append(Show([CraftingBase("Imperial Greathelm")]))
@@ -835,7 +670,7 @@ if HELMET_TOGGLES.CONSTRICTING_COMMAND in toggles:
 # Gloves
 # =============================================================================
 
-rules.append(Hide([Class("Gloves")]))
+rules.append(Hide([AnyClass("Gloves")]))
 
 rules.append(
     Show(
@@ -844,6 +679,7 @@ rules.append(
             Rarity(RARITY.MAGIC, OPERATOR.GTE),
             MultiBaseType(
                 [
+                    "Stocky Mitts",
                     "Suede Bracers",
                     "Torn Gloves",
                     "Ringmail Gauntlets",
@@ -856,8 +692,11 @@ rules.append(
     )
 )
 
-if GLOVES_TOGGLES.ANY in toggles:
-    rules.append(Show([PureArmour(), Class("Gloves"), TierStyle(TIER.EPIC)]))
+if GLOVES_TOGGLES.ANY_ARMOUR in toggles:
+    rules.append(Show([PureArmour(), AnyClass("Gloves")]))
+
+if GLOVES_TOGGLES.ANY_EVASION in toggles:
+    rules.append(Show([PureEvasion(), AnyClass("Gloves")]))
 
 if GLOVES_TOGGLES.MASSIVE in toggles:
     rules.append(Show([CraftingBase("Massive Mitts")]))
@@ -869,7 +708,7 @@ if GLOVES_TOGGLES.T1_MASSIVE in toggles:
 # Boots
 # =============================================================================
 
-rules.append(Hide([Class("Boots")]))
+rules.append(Hide([AnyClass("Boots")]))
 
 rules.append(
     Show(
@@ -878,6 +717,7 @@ rules.append(
             Rarity(RARITY.MAGIC, OPERATOR.GTE),
             MultiBaseType(
                 [
+                    "Rough Greaves",
                     "Rawhide Boots",
                     "Straw Sandals",
                     "Mail Sabatons",
@@ -890,8 +730,11 @@ rules.append(
     )
 )
 
-if BOOTS_TOGGLES.ANY in toggles:
-    rules.append(Show([PureArmour(), Class("Boots"), TierStyle(TIER.EPIC)]))
+if BOOTS_TOGGLES.ANY_ARMOUR in toggles:
+    rules.append(Show([PureArmour(), AnyClass("Boots")]))
+
+if BOOTS_TOGGLES.ANY_EVASION in toggles:
+    rules.append(Show([PureEvasion(), AnyClass("Boots")]))
 
 if BOOTS_TOGGLES.TASALIAN in toggles:
     rules.append(Show([CraftingBase("Tasalian Greaves")]))
@@ -903,10 +746,13 @@ if BOOTS_TOGGLES.T1_TASALIAN in toggles:
 # Body Armour
 # =============================================================================
 
-rules.append(Hide([Class("Body Armours")]))
+rules.append(Hide([AnyClass("Body Armours")]))
 
-if BODY_TOGGLES.ANY in toggles:
-    rules.append(Show([PureArmour(), Class("Body Armours"), TierStyle(TIER.EPIC)]))
+if BODY_TOGGLES.ANY_ARMOUR in toggles:
+    rules.append(Show([PureArmour(), AnyClass("Body Armours")]))
+
+if BODY_TOGGLES.ANY_EVASION in toggles:
+    rules.append(Show([PureEvasion(), AnyClass("Body Armours")]))
 
 if BODY_TOGGLES.SOLDIER in toggles:
     rules.append(Show([CraftingBase("Soldier Cuirass")]))
@@ -925,7 +771,7 @@ if BODY_TOGGLES.BRASS_DOME in toggles:
 rules.append(Hide([WeaponClasses()]))
 
 if MACE_TOGGLES.ANY in toggles:
-    rules.append(Show([Class("One Hand Maces"), TierStyle(TIER.EPIC)]))
+    rules.append(Show([AnyClass("One Hand Maces")]))
 
 daze_base_types = ["Fortified Hammer", "Structured Hammer"]
 
@@ -944,7 +790,7 @@ if MACE_TOGGLES.T1_DAZE in toggles:
 rules.append(Hide([OffhandClasses()]))
 
 if SHIELD_TOGGLES.ANY in toggles:
-    rules.append(Show([PureArmour(), Class("Shields"), TierStyle(TIER.EPIC)]))
+    rules.append(Show([PureArmour(), AnyClass("Shields")]))
 
 if SHIELD_TOGGLES.TAWHOAN in toggles:
     rules.append(Show([CraftingBase("Tawhoan Tower Shield")]))
@@ -956,9 +802,27 @@ if SHIELD_TOGGLES.T1_TAWHOAN in toggles:
 # Bow
 # =============================================================================
 
+if BOW_TOGGLES.ANY in toggles:
+    rules.append(Show([AnyClass("Bows")]))
+
+if BOW_TOGGLES.OBLITERATOR in toggles:
+    rules.append(Show([CraftingBase("Obliterator Bow")]))
+
+if BOW_TOGGLES.T1_OBLITERATOR in toggles:
+    rules.append(Show([PerfectCraftingBase("Obliterator Bow")]))
+
 # =============================================================================
 # Quiver
 # =============================================================================
+
+if QUIVER_TOGGLES.ANY in toggles:
+    rules.append(Show([AnyClass("Quivers")]))
+
+if QUIVER_TOGGLES.VISCERAL in toggles:
+    rules.append(Show([CraftingBase("Visceral Quiver")]))
+
+if QUIVER_TOGGLES.T1_VISCERAL in toggles:
+    rules.append(Show([PerfectCraftingBase("Visceral Quiver", ilvl=80)]))
 
 # =============================================================================
 # Generate filter

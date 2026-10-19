@@ -77,26 +77,30 @@ class RING_TOGGLES(StrEnum):
 
 
 class HELMET_TOGGLES(StrEnum):
-    ANY = "Any"
+    ANY_ARMOUR = "Any Armour base"
+    ANY_EVASION = "Any Evasion base"
     IMPERIAL = "Imperial Helmet"
     T1_IMPERIAL = "Imperial Helmet with maximum Item Level"
     CONSTRICTING_COMMAND = "Constricting Command"
 
 
 class GLOVES_TOGGLES(StrEnum):
-    ANY = "Any"
+    ANY_ARMOUR = "Any Armour base"
+    ANY_EVASION = "Any Evasion base"
     MASSIVE = "Massive Mitts"
     T1_MASSIVE = "Massive Mitts with maximum Item Level"
 
 
 class BOOTS_TOGGLES(StrEnum):
-    ANY = "Any"
+    ANY_ARMOUR = "Any Armour base"
+    ANY_EVASION = "Any Evasion base"
     TASALIAN = "Tasalian Boots"
     T1_TASALIAN = "Tasalian Boots with maximum Item Level"
 
 
 class BODY_TOGGLES(StrEnum):
-    ANY = "Any"
+    ANY_ARMOUR = "Any Armour base"
+    ANY_EVASION = "Any Evasion base"
     SOLDIER = "Soldier Cuirass"
     T1_SOLDIER = "Soldier Cuirass with maximum Item Level"
     BRASS_DOME = "Brass Dome"
@@ -114,13 +118,31 @@ class SHIELD_TOGGLES(StrEnum):
     T1_TAWHOAN = "Tawhoan Tower Shield with maximum Item Level"
 
 
+class BOW_TOGGLES(StrEnum):
+    ANY = "Any"
+    OBLITERATOR = "Obliterator Bow"
+    T1_OBLITERATOR = "Obliterator Bow with maximum Item Level"
+
+
+class QUIVER_TOGGLES(StrEnum):
+    ANY = "Any"
+    VISCERAL = "Visceral Quiver"
+    T1_VISCERAL = "Visceral Quiver with maximum Item Level"
+
+
 class OTHER_TOGGLES(StrEnum):
     SEKHEMA = "trial of sekhema key"
     CHAOS = "trial of chaos key"
     GREATER_RUNE = "good greater runes"
+    UNIQUES = "Any unique"
 
 
 toggles = [
+    # Other
+    OTHER_TOGGLES.SEKHEMA,
+    OTHER_TOGGLES.CHAOS,
+    OTHER_TOGGLES.GREATER_RUNE,
+    OTHER_TOGGLES.UNIQUES,
     # Gem
     GEM_TOGGLES.ANY,
     GEM_TOGGLES.SUPPORT_5,
@@ -142,6 +164,10 @@ toggles = [
     CURRENCY_TOGGLES.BLACKSMITH,
     CURRENCY_TOGGLES.LESSER_JEWELLER,
     CURRENCY_TOGGLES.GREATER_JEWELLER,
+    # Jewel
+    JEWEL_TOGGLES.RUBY,
+    JEWEL_TOGGLES.SAPPHIRE,
+    JEWEL_TOGGLES.EMERALD,
     # Charm
     CHARM_TOGGLES.ANY,
     CHARM_TOGGLES.ANTIDOTE,
@@ -177,33 +203,41 @@ toggles = [
     RING_TOGGLES.T1_RESISTANCE_BASE,
     RING_TOGGLES.KALANDRAS_TOUCH,
     # Helmet
-    HELMET_TOGGLES.ANY,
-    HELMET_TOGGLES.IMPERIAL,
-    HELMET_TOGGLES.T1_IMPERIAL,
+    # HELMET_TOGGLES.ANY_ARMOUR,
+    HELMET_TOGGLES.ANY_EVASION,
+    # HELMET_TOGGLES.IMPERIAL,
+    # HELMET_TOGGLES.T1_IMPERIAL,
     HELMET_TOGGLES.CONSTRICTING_COMMAND,
     # Gloves
-    GLOVES_TOGGLES.ANY,
-    GLOVES_TOGGLES.MASSIVE,
-    GLOVES_TOGGLES.T1_MASSIVE,
+    # GLOVES_TOGGLES.ANY_ARMOUR,
+    GLOVES_TOGGLES.ANY_EVASION,
+    # GLOVES_TOGGLES.MASSIVE,
+    # GLOVES_TOGGLES.T1_MASSIVE,
     # Boots
-    BOOTS_TOGGLES.ANY,
-    BOOTS_TOGGLES.TASALIAN,
-    BOOTS_TOGGLES.T1_TASALIAN,
+    # BOOTS_TOGGLES.ANY_ARMOUR,
+    BOOTS_TOGGLES.ANY_EVASION,
+    # BOOTS_TOGGLES.TASALIAN,
+    # BOOTS_TOGGLES.T1_TASALIAN,
     # Body Armour
-    BODY_TOGGLES.ANY,
-    BODY_TOGGLES.SOLDIER,
-    BODY_TOGGLES.T1_SOLDIER,
-    BODY_TOGGLES.BRASS_DOME,
+    # BODY_TOGGLES.ANY_ARMOUR,
+    BODY_TOGGLES.ANY_EVASION,
+    # BODY_TOGGLES.SOLDIER,
+    # BODY_TOGGLES.T1_SOLDIER,
+    # BODY_TOGGLES.BRASS_DOME,
     # Mace
-    MACE_TOGGLES.ANY,
-    MACE_TOGGLES.DAZE,
-    MACE_TOGGLES.T1_DAZE,
+    # MACE_TOGGLES.ANY,
+    # MACE_TOGGLES.DAZE,
+    # MACE_TOGGLES.T1_DAZE,
     # Shield
-    SHIELD_TOGGLES.ANY,
-    SHIELD_TOGGLES.TAWHOAN,
-    SHIELD_TOGGLES.T1_TAWHOAN,
-    # Other
-    OTHER_TOGGLES.SEKHEMA,
-    OTHER_TOGGLES.CHAOS,
-    OTHER_TOGGLES.GREATER_RUNE,
+    # SHIELD_TOGGLES.ANY,
+    # SHIELD_TOGGLES.TAWHOAN,
+    # SHIELD_TOGGLES.T1_TAWHOAN,
+    # Bow
+    BOW_TOGGLES.ANY,
+    BOW_TOGGLES.OBLITERATOR,
+    BOW_TOGGLES.T1_OBLITERATOR,
+    # Quiver
+    QUIVER_TOGGLES.ANY,
+    QUIVER_TOGGLES.VISCERAL,
+    QUIVER_TOGGLES.T1_VISCERAL,
 ]
