@@ -6,13 +6,13 @@ In doing so we avoid the many to many assignment of properties and try to
 reduce it to one-to-one as much as possible
 """
 
-import os
 import datetime
+import os
 from pathlib import Path
 
 from app import formatting
-from app.blocks import *
 from app.actions import *
+from app.blocks import *
 from app.categories import *
 
 FILTER_EXTENSION = "filter"

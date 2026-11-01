@@ -490,7 +490,7 @@ if CURRENCY_TOGGLES.GREATER_JEWELLER in toggles:
 # Jewel
 # =============================================================================
 
-rules.append(Hide([AnyClass("Jewels")]))
+rules.append(Hide([AnyClass("Jewels", tier=None)]))
 
 if JEWEL_TOGGLES.RUBY in toggles:
     rules.append(Show([BaseType("Ruby"), TierStyle(TIER.EPIC)]))
@@ -510,7 +510,7 @@ rules.append(Show([Class("Jewels"), Rarity(RARITY.UNIQUE), TierStyle(TIER.LEGEND
 # Charm
 # =============================================================================
 
-rules.append(Hide([AnyClass("Charms")]))
+rules.append(Hide([AnyClass("Charms", tier=None)]))
 
 if CHARM_TOGGLES.ANY in toggles:
     rules.append(Show([AnyClass("Charms")]))
@@ -575,7 +575,7 @@ if FLASK_TOGGLES.LAVIAGNAS_SPIRITS in toggles:
 # Amulet
 # =============================================================================
 
-rules.append(Hide([AnyClass("Amulets")]))
+rules.append(Hide([AnyClass("Amulets", tier=None)]))
 
 if AMULET_TOGGLES.ANY in toggles:
     rules.append(Show([AnyClass("Amulets")]))
@@ -599,7 +599,7 @@ if AMULET_TOGGLES.T1_GOOD_BASE in toggles:
 # Belt
 # =============================================================================
 
-rules.append(Hide([AnyClass("Belts")]))
+rules.append(Hide([AnyClass("Belts", tier=None)]))
 
 if BELT_TOGGLES.ANY in toggles:
     rules.append(Show([AnyClass("Belts")]))
@@ -622,7 +622,7 @@ if BELT_TOGGLES.HEADHUNTER in toggles:
 # Ring
 # =============================================================================
 
-rules.append(Hide([AnyClass("Rings")]))
+rules.append(Hide([AnyClass("Rings", tier=None)]))
 
 if RING_TOGGLES.ANY in toggles:
     rules.append(Show([AnyClass("Rings")]))
@@ -648,7 +648,7 @@ if RING_TOGGLES.KALANDRAS_TOUCH in toggles:
 # Helmet
 # =============================================================================
 
-rules.append(Hide([AnyClass("Helmets")]))
+rules.append(Hide([AnyClass("Helmets", tier=None)]))
 
 if HELMET_TOGGLES.ANY_ARMOUR in toggles:
     rules.append(Show([PureArmour(), AnyClass("Helmets")]))
@@ -676,7 +676,7 @@ if HELMET_TOGGLES.CONSTRICTING_COMMAND in toggles:
 # Gloves
 # =============================================================================
 
-rules.append(Hide([AnyClass("Gloves")]))
+rules.append(Hide([AnyClass("Gloves", tier=None)]))
 
 rules.append(
     Show(
@@ -720,7 +720,7 @@ if GLOVES_TOGGLES.T1_POLISHED in toggles:
 # Boots
 # =============================================================================
 
-rules.append(Hide([AnyClass("Boots")]))
+rules.append(Hide([AnyClass("Boots", tier=None)]))
 
 rules.append(
     Show(
@@ -764,7 +764,7 @@ if BOOTS_TOGGLES.T1_DRAKESKIN in toggles:
 # Body Armour
 # =============================================================================
 
-rules.append(Hide([AnyClass("Body Armours")]))
+rules.append(Hide([AnyClass("Body Armours", tier=None)]))
 
 if BODY_TOGGLES.ANY_ARMOUR in toggles:
     rules.append(Show([PureArmour(), AnyClass("Body Armours")]))
@@ -852,4 +852,5 @@ if QUIVER_TOGGLES.T1_VISCERAL in toggles:
 # Generate filter
 # =============================================================================
 
-filter.generate(rules, "shield-wall")
+rules.append(Show([InActOne()]))
+filter.generate(rules, "main")

@@ -2,7 +2,7 @@ from enum import StrEnum
 
 
 class GEM_TOGGLES(StrEnum):
-    ANY = "Any"
+    ANY = "Any gem"
     SUPPORT_5 = "lvl 5 support gem"
     SKILL_16 = "lvl 16 skill gem"
     SKILL_17 = "lvl 17 skill gem"
@@ -33,7 +33,7 @@ class JEWEL_TOGGLES(StrEnum):
 
 
 class CHARM_TOGGLES(StrEnum):
-    ANY = "Any"
+    ANY = "Any charm"
     ANTIDOTE = "Antidote Charm"
     T1_ANTIDOTE = "Antidote Charm with maximum Item Level"
     UNIQUE_ANTIDOTE = "Arakaali's Gift"
@@ -47,7 +47,7 @@ class CHARM_TOGGLES(StrEnum):
 
 
 class FLASK_TOGGLES(StrEnum):
-    ANY = "Any"
+    ANY = "Any flask"
     ULTIMATE_LIFE = "Ultimate Life Flask"
     T1_ULTIMATE_LIFE = "Ultimate Life Flask with maximum Item Level"
     ULTIMATE_MANA = "Ultimate Mana Flask"
@@ -56,13 +56,13 @@ class FLASK_TOGGLES(StrEnum):
 
 
 class AMULET_TOGGLES(StrEnum):
-    ANY = "Any"
+    ANY = "Any amulet"
     GOOD_BASE = "Good base type"
     T1_GOOD_BASE = "Good base type with maximum Item Level"
 
 
 class BELT_TOGGLES(StrEnum):
-    ANY = "Any"
+    ANY = "Any belt"
     FINE = "Fine Belt"
     T1_FINE = "Fine Belt with maximum Item Level"
     MAGEBLOOD = "Mageblood"
@@ -70,7 +70,7 @@ class BELT_TOGGLES(StrEnum):
 
 
 class RING_TOGGLES(StrEnum):
-    ANY = "Any"
+    ANY = "Any ring"
     RESISTANCE_BASE = "Bases with resistances"
     T1_RESISTANCE_BASE = "Bases with resistances with maximum Item Level"
     KALANDRAS_TOUCH = "Kalandra's Touch"
@@ -115,25 +115,25 @@ class BODY_TOGGLES(StrEnum):
 
 
 class MACE_TOGGLES(StrEnum):
-    ANY = "Any"
+    ANY = "Any mace"
     DAZE = "Fortified or Structured"
     T1_DAZE = "Fortified or Structured and T1 Melee Levels"
 
 
 class SHIELD_TOGGLES(StrEnum):
-    ANY = "Any"
+    ANY = "Any shield"
     TAWHOAN = "Tawhoan Tower Shield"
     T1_TAWHOAN = "Tawhoan Tower Shield with maximum Item Level"
 
 
 class BOW_TOGGLES(StrEnum):
-    ANY = "Any"
+    ANY = "Any bow"
     OBLITERATOR = "Obliterator Bow"
     T1_OBLITERATOR = "Obliterator Bow with maximum Item Level"
 
 
 class QUIVER_TOGGLES(StrEnum):
-    ANY = "Any"
+    ANY = "Any quiver"
     VISCERAL = "Visceral Quiver"
     T1_VISCERAL = "Visceral Quiver with maximum Item Level"
 
@@ -165,12 +165,12 @@ toggles = [
     GEM_TOGGLES.SPIRIT_19,
     GEM_TOGGLES.SPIRIT_20,
     # Currency
-    CURRENCY_TOGGLES.SCROLL_OF_WISDOM,
+    # CURRENCY_TOGGLES.SCROLL_OF_WISDOM,
     CURRENCY_TOGGLES.ARTIFICER,
     # CURRENCY_TOGGLES.ARCANIST,
     CURRENCY_TOGGLES.ARMOURER,
     CURRENCY_TOGGLES.BLACKSMITH,
-    CURRENCY_TOGGLES.LESSER_JEWELLER,
+    # CURRENCY_TOGGLES.LESSER_JEWELLER,
     CURRENCY_TOGGLES.GREATER_JEWELLER,
     # Jewel
     JEWEL_TOGGLES.RUBY,

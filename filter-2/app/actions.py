@@ -130,6 +130,9 @@ class TierStyle(Condition):
         basic_sound = BASIC_SOUND.ELECTRICITY
         volume = VOLUME.QUIET
 
+        if not self.tier:
+            return ""
+
         if self.tier == TIER.RARE:
             color = COLOR.BLUE
             rgb = RGB.BLUE
